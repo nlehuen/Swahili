@@ -18,6 +18,7 @@
 		289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
 		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
 		371EBDB8121937C000D7AD90 /* hp48gx-kbd.png in Resources */ = {isa = PBXBuildFile; fileRef = 371EBDB7121937C000D7AD90 /* hp48gx-kbd.png */; };
+		376694591219D708000DFC3E /* background-texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 376694581219D708000DFC3E /* background-texture.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Swahili_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Swahili_Prefix.pch; sourceTree = "<group>"; };
 		371EBDB7121937C000D7AD90 /* hp48gx-kbd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hp48gx-kbd.png"; sourceTree = "<group>"; };
+		376694581219D708000DFC3E /* background-texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-texture.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Swahili-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Swahili-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +118,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				376694581219D708000DFC3E /* background-texture.png */,
 				371EBDB7121937C000D7AD90 /* hp48gx-kbd.png */,
 				280E754A0DD40C5E005A515E /* FlipsideView.xib */,
 				280E754B0DD40C5E005A515E /* MainView.xib */,
@@ -191,6 +194,7 @@
 				280E754E0DD40C5E005A515E /* MainView.xib in Resources */,
 				280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */,
 				371EBDB8121937C000D7AD90 /* hp48gx-kbd.png in Resources */,
+				376694591219D708000DFC3E /* background-texture.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
