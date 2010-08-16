@@ -182,7 +182,8 @@
             
         case 4: // POWER
             result = (NSDecimalNumber*)[NSDecimalNumber numberWithDouble:pow([op2 doubleValue], [op1 doubleValue])];
-        
+            break;
+            
         default:
             result = op1;
             break;
