@@ -20,8 +20,8 @@
 - (IBAction)showInfo:(id)sender;
 - (IBAction)numberHit:(id)sender;
 - (IBAction)controlHit:(id)sender;
-- (IBAction)operationHit:(id)sender;
-
+- (IBAction)singleParameterOperationHit:(id)sender;
+- (IBAction)doubleParametersOperationHit:(id)sender;
 - (void)updateStackView;
 - (void)push;
 - (NSDecimalNumber*)pop;

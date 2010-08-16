@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 
+#import "NSDecimalNumber.h"
 
 @implementation MainViewController
 
@@ -93,7 +94,47 @@
 	}
 }
 
-- (IBAction)operationHit:(UIButton*)sender {
+
+- (IBAction)singleParameterOperationHit:(UIButton*)sender {
+	[self push];
+	
+	NSDecimalNumber* op1 = [[self pop] retain];
+	
+	NSDecimalNumber* result;
+	
+	switch (sender.tag) {
+		case 0:
+			result = [NSDecimalNumber decimalNumberWithDouble:sin([op1 doubleValue])];
+			break;
+		case 1:
+			result = [NSDecimalNumber decimalNumberWithDouble:cos([op1 doubleValue])];
+			break;
+		case 2:
+			result = [NSDecimalNumber decimalNumberWithDouble:tan([op1 doubleValue])];
+			break;
+		case 3:
+			if([op1 compare:[NSDecimalNumber zero]] != NSOrderedAscending) {
+				result = [NSDecimalNumber decimalNumberWithDouble:sqrt([op1 doubleValue])];
+			}
+			else {
+				result = [NSDecimalNumber zero];
+			}
+			break;
+		case 4:
+			result = [[NSDecimalNumber one] decimalNumberByDividingBy:op1];
+			break;
+		default:
+			break;
+	}
+	
+	[op1 release];
+	
+	[_stack addObject:result];
+	
+	[self updateStackView];
+}
+
+- (IBAction)doubleParametersOperationHit:(UIButton*)sender {
 	[self push];
 	
 	NSDecimalNumber* op1 = [[self pop] retain];
@@ -113,6 +154,9 @@
 			break;
 		case 3:
 			result = [op2 decimalNumberByDividingBy:op1];
+			break;
+		case 4:
+			result = [NSDecimalNumber decimalNumberWithDouble:pow([op2 doubleValue], [op1 doubleValue])];
 		default:
 			break;
 	}
@@ -123,13 +167,14 @@
 	[_stack addObject:result];
 	
 	[self updateStackView];
-
 }
 
 -(void)updateStackView {
 	NSUInteger count = [_stack count];
 	
 	NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+	formatter.numberStyle = NSNumberFormatterDecimalStyle;
+	formatter.maximumFractionDigits = 20;
 	
 	stackView2.text = count>0 ? [formatter stringFromNumber: [_stack objectAtIndex:(count-1)]] : @"";
 	stackView3.text = count>1 ? [formatter stringFromNumber: [_stack objectAtIndex:(count-2)]] : @"";
@@ -153,6 +198,7 @@
 	if(_stack.count == 0) return [NSDecimalNumber zero];
 	NSDecimalNumber* result = [[_stack lastObject] retain];
 	[_stack removeLastObject];
+	[result autorelease];
 	return result;
 }
 
