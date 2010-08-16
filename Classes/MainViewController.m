@@ -16,7 +16,7 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	_stack = [[NSMutableArray arrayWithCapacity:100] retain];
+	_stack = [[NSMutableArray alloc] initWithCapacity:10];
 	[self updateStackView];
 }
 
@@ -53,7 +53,19 @@
 }
 
 - (IBAction)numberHit:(UIButton*)sender {
-	stackView1.text = [stackView1.text stringByAppendingFormat:@"%d", sender.tag];
+	NSInteger tag = sender.tag;
+	NSString* text = [stackView1.text retain];
+	
+	if(tag==-1) {
+		NSRange dot = [text rangeOfString:@"."];
+		if(dot.location == NSNotFound)
+			stackView1.text = [text stringByAppendingFormat:@"."];
+	}
+	else {
+		stackView1.text = [text stringByAppendingFormat:@"%d", sender.tag];
+	}
+	
+	[text release];
 }
 
 - (IBAction)controlHit:(UIButton*)sender {
@@ -84,51 +96,62 @@
 - (IBAction)operationHit:(UIButton*)sender {
 	[self push];
 	
-	double op1 = [self pop];
-	double op2 = [self pop];
+	NSDecimalNumber* op1 = [[self pop] retain];
+	NSDecimalNumber* op2 = [[self pop] retain];
 	
-	double result;
+	NSDecimalNumber* result;
 	
 	switch (sender.tag) {
 		case 0:
-		    result = op2 + op1;
+			result = [op2 decimalNumberByAdding:op1];
 			break;
 		case 1:
-			result = op2 - op1;
+			result = [op2 decimalNumberBySubtracting:op1];
 			break;
 		case 2:
-			result = op2 * op1;
+			result = [op2 decimalNumberByMultiplyingBy:op1];
 			break;
 		case 3:
-			result = op2 / op1;
+			result = [op2 decimalNumberByDividingBy:op1];
 		default:
 			break;
 	}
 	
-	NSString *resultString = [[NSString alloc] initWithFormat:@"%f",result];
-	[_stack addObject:resultString];
-	[resultString release];
+	[op1 release];
+	[op2 release];
+	
+	[_stack addObject:result];
 	
 	[self updateStackView];
+
 }
 
 -(void)updateStackView {
 	NSUInteger count = [_stack count];
 	
-	stackView2.text = count>0 ? [_stack objectAtIndex:(count-1)] : @"0";
-	stackView3.text = count>1 ? [_stack objectAtIndex:(count-2)] : @"0";
-	stackView4.text = count>2 ? [_stack objectAtIndex:(count-3)] : @"0";
+	NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+	
+	stackView2.text = count>0 ? [formatter stringFromNumber: [_stack objectAtIndex:(count-1)]] : @"";
+	stackView3.text = count>1 ? [formatter stringFromNumber: [_stack objectAtIndex:(count-2)]] : @"";
+	stackView4.text = count>2 ? [formatter stringFromNumber: [_stack objectAtIndex:(count-3)]] : @"";
+	
+	[formatter release];
 }
 
 -(void)push {
-	if(stackView1.text.length == 0) return;
-	[_stack addObject:stackView1.text];
-	stackView1.text = @"";
+	NSString* text = [stackView1.text retain];
+	if(text.length>0) {
+		NSDecimalNumber* op = [[NSDecimalNumber alloc] initWithString:text];
+		[_stack addObject:op];
+		[op release];
+		stackView1.text = @"";
+	}
+	[text release];
 }
 
-- (double)pop {
-	if([_stack count]==0) return 0.0;
-	double result = [[_stack lastObject] doubleValue];
+- (NSDecimalNumber*)pop {
+	if(_stack.count == 0) return [NSDecimalNumber zero];
+	NSDecimalNumber* result = [[_stack lastObject] retain];
 	[_stack removeLastObject];
 	return result;
 }

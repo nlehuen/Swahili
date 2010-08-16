@@ -12,10 +12,10 @@
 	NSMutableArray *_stack;
 }
 
-@property(nonatomic,retain) IBOutlet UITextField *stackView1;
-@property(nonatomic,retain) IBOutlet UITextField *stackView2;
-@property(nonatomic,retain) IBOutlet UITextField *stackView3;
-@property(nonatomic,retain) IBOutlet UITextField *stackView4;
+@property(nonatomic,retain) IBOutlet UILabel *stackView1;
+@property(nonatomic,retain) IBOutlet UILabel *stackView2;
+@property(nonatomic,retain) IBOutlet UILabel *stackView3;
+@property(nonatomic,retain) IBOutlet UILabel *stackView4;
 
 - (IBAction)showInfo:(id)sender;
 - (IBAction)numberHit:(id)sender;
@@ -24,6 +24,6 @@
 
 - (void)updateStackView;
 - (void)push;
-- (double)pop;
+- (NSDecimalNumber*)pop;
 
 @end
