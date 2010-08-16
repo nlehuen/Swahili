@@ -20,14 +20,12 @@
 }
 
 
-- (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller {
-    
+- (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller {    
     [self dismissModalViewControllerAnimated:YES];
 }
 
 
-- (IBAction)showInfo:(id)sender {    
-    
+- (IBAction)showInfo:(id)sender {       
     FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
     controller.delegate = self;
     
@@ -48,7 +46,10 @@
 
 - (void)viewDidUnload {
     // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    self.stackView1 = nil;
+    self.stackView2 = nil;
+    self.stackView3 = nil;
+    self.stackView4 = nil;
 }
 
 - (IBAction)numberHit:(UIButton*)sender {
@@ -238,8 +239,11 @@
 }
 */
 
-
 - (void)dealloc {
+    [stackView1 release];
+    [stackView2 release];
+    [stackView3 release];
+    [stackView4 release];
     [_stack release];
     [super dealloc];
 }
