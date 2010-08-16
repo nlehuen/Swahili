@@ -69,6 +69,7 @@
 
 - (IBAction)controlHit:(UIButton*)sender {
 	NSString* text;
+	NSUInteger count;
 	
 	switch(sender.tag) {
 		case 0:
@@ -89,6 +90,17 @@
 			[self pop];
 			[self updateStackView];
 			break;
+		
+		case 3:
+			count = _stack.count;
+			if(count>=2) {
+				NSDecimalNumber *tmp = [[_stack lastObject] retain];
+				[_stack replaceObjectAtIndex:(count-1) withObject:[_stack objectAtIndex:(count-2)]];
+				[_stack replaceObjectAtIndex:(count-2) withObject:tmp];
+				[tmp release];
+				[self updateStackView];
+			}
+			break;
 	}
 }
 
@@ -101,6 +113,9 @@
 	NSDecimalNumber* result;
 	
 	switch (sender.tag) {
+		case -1:
+			result = [op1 decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:1 exponent:0 isNegative:YES]];
+			break;
 		case 0:
 			result = (NSDecimalNumber*)[NSDecimalNumber numberWithDouble:sin([op1 doubleValue])];
 			break;
