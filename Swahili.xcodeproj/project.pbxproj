@@ -18,7 +18,6 @@
 		289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
 		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
 		371EBDB8121937C000D7AD90 /* hp48gx-kbd.png in Resources */ = {isa = PBXBuildFile; fileRef = 371EBDB7121937C000D7AD90 /* hp48gx-kbd.png */; };
-		37F8CE57121983A5000C024B /* NSDecimalNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F8CE56121983A5000C024B /* NSDecimalNumber.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,8 +37,6 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Swahili_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Swahili_Prefix.pch; sourceTree = "<group>"; };
 		371EBDB7121937C000D7AD90 /* hp48gx-kbd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hp48gx-kbd.png"; sourceTree = "<group>"; };
-		37F8CE55121983A5000C024B /* NSDecimalNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDecimalNumber.h; sourceTree = "<group>"; };
-		37F8CE56121983A5000C024B /* NSDecimalNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDecimalNumber.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Swahili-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Swahili-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,8 +109,6 @@
 			children = (
 				32CA4F630368D1EE00C91783 /* Swahili_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
-				37F8CE55121983A5000C024B /* NSDecimalNumber.h */,
-				37F8CE56121983A5000C024B /* NSDecimalNumber.m */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -210,7 +205,6 @@
 				1D3623260D0F684500981E51 /* SwahiliAppDelegate.m in Sources */,
 				289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */,
 				289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */,
-				37F8CE57121983A5000C024B /* NSDecimalNumber.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

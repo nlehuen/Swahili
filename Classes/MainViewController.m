@@ -8,8 +8,6 @@
 
 #import "MainViewController.h"
 
-#import "NSDecimalNumber.h"
-
 @implementation MainViewController
 
 @synthesize stackView1,stackView2,stackView3,stackView4;
@@ -104,17 +102,17 @@
 	
 	switch (sender.tag) {
 		case 0:
-			result = [NSDecimalNumber decimalNumberWithDouble:sin([op1 doubleValue])];
+			result = (NSDecimalNumber*)[NSDecimalNumber numberWithDouble:sin([op1 doubleValue])];
 			break;
 		case 1:
-			result = [NSDecimalNumber decimalNumberWithDouble:cos([op1 doubleValue])];
+			result = (NSDecimalNumber*)[NSDecimalNumber numberWithDouble:cos([op1 doubleValue])];
 			break;
 		case 2:
-			result = [NSDecimalNumber decimalNumberWithDouble:tan([op1 doubleValue])];
+			result = (NSDecimalNumber*)[NSDecimalNumber numberWithDouble:tan([op1 doubleValue])];
 			break;
 		case 3:
 			if([op1 compare:[NSDecimalNumber zero]] != NSOrderedAscending) {
-				result = [NSDecimalNumber decimalNumberWithDouble:sqrt([op1 doubleValue])];
+				result = (NSDecimalNumber*)[NSDecimalNumber numberWithDouble:sqrt([op1 doubleValue])];
 			}
 			else {
 				result = [NSDecimalNumber zero];
@@ -156,7 +154,7 @@
 			result = [op2 decimalNumberByDividingBy:op1];
 			break;
 		case 4:
-			result = [NSDecimalNumber decimalNumberWithDouble:pow([op2 doubleValue], [op1 doubleValue])];
+			result = (NSDecimalNumber*)[NSDecimalNumber numberWithDouble:pow([op2 doubleValue], [op1 doubleValue])];
 		default:
 			break;
 	}
@@ -174,7 +172,7 @@
 	
 	NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
 	formatter.numberStyle = NSNumberFormatterDecimalStyle;
-	formatter.maximumFractionDigits = 20;
+	formatter.maximumFractionDigits = 30;
 	
 	stackView2.text = count>0 ? [formatter stringFromNumber: [_stack objectAtIndex:(count-1)]] : @"";
 	stackView3.text = count>1 ? [formatter stringFromNumber: [_stack objectAtIndex:(count-2)]] : @"";
