@@ -72,12 +72,12 @@
 	NSUInteger count;
 	
 	switch(sender.tag) {
-		case 0:
+		case 0: // ENTER
 			[self push];
 			[self updateStackView];
 			break;
 		
-		case 1:
+		case 1: // DELETE
 			text = [stackView1.text retain];
 			NSUInteger length = text.length;
 			if(length > 0) {
@@ -86,12 +86,12 @@
 			[text release];
 			break;
 			
-		case 2:
+		case 2: // DROP
 			[self pop];
 			[self updateStackView];
 			break;
 		
-		case 3:
+		case 3: // SWAP
 			count = _stack.count;
 			if(count>=2) {
 				NSDecimalNumber *tmp = [[_stack lastObject] retain];
@@ -113,19 +113,23 @@
 	NSDecimalNumber* result;
 	
 	switch (sender.tag) {
-		case -1:
+		case -1: // NEGATE
 			result = [op1 decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:1 exponent:0 isNegative:YES]];
 			break;
-		case 0:
+			
+		case 0: // SIN
 			result = (NSDecimalNumber*)[NSDecimalNumber numberWithDouble:sin([op1 doubleValue])];
 			break;
-		case 1:
+			
+		case 1: // COS
 			result = (NSDecimalNumber*)[NSDecimalNumber numberWithDouble:cos([op1 doubleValue])];
 			break;
-		case 2:
+			
+		case 2: // TAN
 			result = (NSDecimalNumber*)[NSDecimalNumber numberWithDouble:tan([op1 doubleValue])];
 			break;
-		case 3:
+			
+		case 3: // SQRT
 			if([op1 compare:[NSDecimalNumber zero]] != NSOrderedAscending) {
 				result = (NSDecimalNumber*)[NSDecimalNumber numberWithDouble:sqrt([op1 doubleValue])];
 			}
@@ -133,16 +137,19 @@
 				result = [NSDecimalNumber zero];
 			}
 			break;
-		case 4:
+			
+		case 4: // INVERT
 			result = [[NSDecimalNumber one] decimalNumberByDividingBy:op1];
 			break;
+			
 		default:
+			result = op1;
 			break;
 	}
+
+	[_stack addObject:result];
 	
 	[op1 release];
-	
-	[_stack addObject:result];
 	
 	[self updateStackView];
 }
@@ -156,28 +163,28 @@
 	NSDecimalNumber* result;
 	
 	switch (sender.tag) {
-		case 0:
+		case 0: // ADD
 			result = [op2 decimalNumberByAdding:op1];
 			break;
-		case 1:
+		case 1: // SUBSTRACT
 			result = [op2 decimalNumberBySubtracting:op1];
 			break;
-		case 2:
+		case 2: // MULTIPLY
 			result = [op2 decimalNumberByMultiplyingBy:op1];
 			break;
-		case 3:
+		case 3: // DIVIDE
 			result = [op2 decimalNumberByDividingBy:op1];
 			break;
-		case 4:
+		case 4: // POWER
 			result = (NSDecimalNumber*)[NSDecimalNumber numberWithDouble:pow([op2 doubleValue], [op1 doubleValue])];
 		default:
 			break;
 	}
 	
+	[_stack addObject:result];
+	
 	[op1 release];
 	[op2 release];
-	
-	[_stack addObject:result];
 	
 	[self updateStackView];
 }
