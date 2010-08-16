@@ -57,8 +57,9 @@
     
     if(tag==-1) {
         NSRange dot = [text rangeOfString:@"."];
-        if(dot.location == NSNotFound)
+        if(dot.location == NSNotFound) {
             stackView1.text = [text stringByAppendingFormat:@"."];
+        }
     }
     else {
         stackView1.text = [text stringByAppendingFormat:@"%d", sender.tag];
@@ -166,18 +167,24 @@
         case 0: // ADD
             result = [op2 decimalNumberByAdding:op1];
             break;
+            
         case 1: // SUBSTRACT
             result = [op2 decimalNumberBySubtracting:op1];
             break;
+            
         case 2: // MULTIPLY
             result = [op2 decimalNumberByMultiplyingBy:op1];
             break;
+        
         case 3: // DIVIDE
             result = [op2 decimalNumberByDividingBy:op1];
             break;
+            
         case 4: // POWER
             result = (NSDecimalNumber*)[NSDecimalNumber numberWithDouble:pow([op2 doubleValue], [op1 doubleValue])];
+        
         default:
+            result = op1;
             break;
     }
     
