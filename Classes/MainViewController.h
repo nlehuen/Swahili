@@ -9,7 +9,7 @@
 #import "FlipsideViewController.h"
 
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate> {
-	NSMutableArray *_stack;
+    NSMutableArray *_stack;
 }
 
 @property(nonatomic,retain) IBOutlet UILabel *stackView1;
