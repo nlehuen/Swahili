@@ -569,7 +569,7 @@
 					<object class="IBUILabel" id="947419312">
 						<reference key="NSNextResponder" ref="883825266"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{5, 77}, {310, 21}}</string>
+						<string key="NSFrame">{{5, 74}, {310, 23}}</string>
 						<reference key="NSSuperview" ref="883825266"/>
 						<reference key="IBUIBackgroundColor" ref="348534160"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -590,7 +590,7 @@
 					<object class="IBUILabel" id="366617054">
 						<reference key="NSNextResponder" ref="883825266"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{5, 56}, {310, 21}}</string>
+						<string key="NSFrame">{{5, 51}, {310, 23}}</string>
 						<reference key="NSSuperview" ref="883825266"/>
 						<reference key="IBUIBackgroundColor" ref="348534160"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -608,7 +608,7 @@
 					<object class="IBUILabel" id="115782655">
 						<reference key="NSNextResponder" ref="883825266"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{5, 35}, {310, 21}}</string>
+						<string key="NSFrame">{{5, 28}, {310, 23}}</string>
 						<reference key="NSSuperview" ref="883825266"/>
 						<reference key="IBUIBackgroundColor" ref="348534160"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -626,7 +626,7 @@
 					<object class="IBUILabel" id="483760753">
 						<reference key="NSNextResponder" ref="883825266"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{5, 14}, {310, 21}}</string>
+						<string key="NSFrame">{{5, 5}, {310, 23}}</string>
 						<reference key="NSSuperview" ref="883825266"/>
 						<reference key="IBUIBackgroundColor" ref="348534160"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -976,7 +976,6 @@
 							<reference ref="947419312"/>
 							<reference ref="366617054"/>
 							<reference ref="115782655"/>
-							<reference ref="483760753"/>
 							<reference ref="171499631"/>
 							<reference ref="151523973"/>
 							<reference ref="1014568797"/>
@@ -998,6 +997,7 @@
 							<reference ref="904714235"/>
 							<reference ref="162740407"/>
 							<reference ref="74793400"/>
+							<reference ref="483760753"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -1121,12 +1121,6 @@
 						<string key="objectName">Keyboard image</string>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">100</int>
-						<reference key="object" ref="483760753"/>
-						<reference key="parent" ref="883825266"/>
-						<string key="objectName">Stack 3</string>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">104</int>
 						<reference key="object" ref="115782655"/>
 						<reference key="parent" ref="883825266"/>
@@ -1197,6 +1191,12 @@
 						<reference key="object" ref="814770693"/>
 						<reference key="parent" ref="883825266"/>
 						<string key="objectName">Background texture</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">100</int>
+						<reference key="object" ref="483760753"/>
+						<reference key="parent" ref="883825266"/>
+						<string key="objectName">Stack 3</string>
 					</object>
 				</object>
 			</object>
@@ -1402,7 +1402,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">143</int>
+			<int key="maxID">145</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

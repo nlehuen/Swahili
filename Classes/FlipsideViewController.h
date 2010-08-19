@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import <MapKit/MapKit.h>
-
 @protocol FlipsideViewControllerDelegate;
 
 @interface FlipsideViewController : UIViewController {
@@ -17,8 +15,6 @@
 }
 
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;
-@property (nonatomic, retain) IBOutlet MKMapView* mapView;
-
 - (IBAction)done:(id)sender;
 
 @end

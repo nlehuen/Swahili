@@ -8,6 +8,8 @@
 
 #import "MainViewController.h"
 
+#import <AudioToolbox/AudioToolbox.h>
+
 @implementation MainViewController
 
 @synthesize stackView1,stackView2,stackView3,stackView4;
@@ -85,7 +87,7 @@
             [self updateStackView];
             [text release];
             break;
-        
+            
         case 1: // DELETE
             text = [stackView1.text retain];
             NSUInteger length = text.length;
@@ -99,7 +101,7 @@
             [self pop];
             [self updateStackView];
             break;
-        
+            
         case 3: // SWAP
             count = _stack.count;
             if(count>=2) {
@@ -119,44 +121,50 @@
     
     NSDecimalNumber* op1 = [[self pop] retain];
     
-    NSDecimalNumber* result;
-    
-    switch (sender.tag) {
-        case -1: // NEGATE
-            result = [op1 decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:1 exponent:0 isNegative:YES]];
-            break;
-            
-        case 0: // SIN
-            result = (NSDecimalNumber*)[NSDecimalNumber numberWithDouble:sin([op1 doubleValue])];
-            break;
-            
-        case 1: // COS
-            result = (NSDecimalNumber*)[NSDecimalNumber numberWithDouble:cos([op1 doubleValue])];
-            break;
-            
-        case 2: // TAN
-            result = (NSDecimalNumber*)[NSDecimalNumber numberWithDouble:tan([op1 doubleValue])];
-            break;
-            
-        case 3: // SQRT
-            if([op1 compare:[NSDecimalNumber zero]] != NSOrderedAscending) {
-                result = (NSDecimalNumber*)[NSDecimalNumber numberWithDouble:sqrt([op1 doubleValue])];
-            }
-            else {
-                result = [NSDecimalNumber zero];
-            }
-            break;
-            
-        case 4: // INVERT
-            result = [[NSDecimalNumber one] decimalNumberByDividingBy:op1];
-            break;
-            
-        default:
-            result = op1;
-            break;
+    @try {
+        NSDecimalNumber* result;
+        
+        switch (sender.tag) {
+            case -1: // NEGATE
+                result = [op1 decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:1 exponent:0 isNegative:YES]];
+                break;
+                
+            case 0: // SIN
+                result = (NSDecimalNumber*)[NSDecimalNumber numberWithDouble:sin([op1 doubleValue])];
+                break;
+                
+            case 1: // COS
+                result = (NSDecimalNumber*)[NSDecimalNumber numberWithDouble:cos([op1 doubleValue])];
+                break;
+                
+            case 2: // TAN
+                result = (NSDecimalNumber*)[NSDecimalNumber numberWithDouble:tan([op1 doubleValue])];
+                break;
+                
+            case 3: // SQRT
+                if([op1 compare:[NSDecimalNumber zero]] != NSOrderedAscending) {
+                    result = (NSDecimalNumber*)[NSDecimalNumber numberWithDouble:sqrt([op1 doubleValue])];
+                }
+                else {
+                    result = [NSDecimalNumber zero];
+                }
+                break;
+                
+            case 4: // INVERT
+                result = [[NSDecimalNumber one] decimalNumberByDividingBy:op1];
+                break;
+                
+            default:
+                result = op1;
+                break;
+        }
+        
+        [_stack addObject:result];
     }
-
-    [_stack addObject:result];
+    @catch(NSException *e) {
+        [_stack addObject:op1];
+        AudioServicesPlaySystemSound (kSystemSoundID_Vibrate);
+    }
     
     [op1 release];
     
@@ -169,35 +177,43 @@
     NSDecimalNumber* op1 = [[self pop] retain];
     NSDecimalNumber* op2 = [[self pop] retain];
     
-    NSDecimalNumber* result;
     
-    switch (sender.tag) {
-        case 0: // ADD
-            result = [op2 decimalNumberByAdding:op1];
-            break;
-            
-        case 1: // SUBSTRACT
-            result = [op2 decimalNumberBySubtracting:op1];
-            break;
-            
-        case 2: // MULTIPLY
-            result = [op2 decimalNumberByMultiplyingBy:op1];
-            break;
+    @try {
+        NSDecimalNumber* result;
+        switch (sender.tag) {
+            case 0: // ADD
+                result = [op2 decimalNumberByAdding:op1];
+                break;
+                
+            case 1: // SUBSTRACT
+                result = [op2 decimalNumberBySubtracting:op1];
+                break;
+                
+            case 2: // MULTIPLY
+                result = [op2 decimalNumberByMultiplyingBy:op1];
+                break;
+                
+            case 3: // DIVIDE
+                result = [op2 decimalNumberByDividingBy:op1];
+                break;
+                
+            case 4: // POWER
+                result = (NSDecimalNumber*)[NSDecimalNumber numberWithDouble:pow([op2 doubleValue], [op1 doubleValue])];
+                break;
+                
+            default:
+                result = op1;
+                break;
+        }
         
-        case 3: // DIVIDE
-            result = [op2 decimalNumberByDividingBy:op1];
-            break;
-            
-        case 4: // POWER
-            result = (NSDecimalNumber*)[NSDecimalNumber numberWithDouble:pow([op2 doubleValue], [op1 doubleValue])];
-            break;
-            
-        default:
-            result = op1;
-            break;
+        [_stack addObject:result];
+    }
+    @catch(NSException *e) {
+        [_stack addObject:op1];
+        [_stack addObject:op2];
+        AudioServicesPlaySystemSound (kSystemSoundID_Vibrate);
     }
     
-    [_stack addObject:result];
     
     [op1 release];
     [op2 release];
@@ -239,12 +255,12 @@
 }
 
 /*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations.
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
+ // Override to allow orientations other than the default portrait orientation.
+ - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+ // Return YES for supported orientations.
+ return (interfaceOrientation == UIInterfaceOrientationPortrait);
+ }
+ */
 
 - (void)dealloc {
     [stackView1 release];

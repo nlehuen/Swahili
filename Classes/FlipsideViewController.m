@@ -12,7 +12,6 @@
 @implementation FlipsideViewController
 
 @synthesize delegate;
-@synthesize mapView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,8 +34,6 @@
 
 - (void)viewDidUnload {
     // Release any retained subviews of the main view.
-
-    self.mapView = nil;
 }
 
 
@@ -50,7 +47,6 @@
 
 
 - (void)dealloc {
-    [mapView release];
     [super dealloc];
 }
 

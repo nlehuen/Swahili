@@ -18,8 +18,8 @@
 		289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
 		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
 		371EBDB8121937C000D7AD90 /* hp48gx-kbd.png in Resources */ = {isa = PBXBuildFile; fileRef = 371EBDB7121937C000D7AD90 /* hp48gx-kbd.png */; };
+		3725CB25121D901C00DC1A1B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3725CB24121D901C00DC1A1B /* AudioToolbox.framework */; };
 		376694591219D708000DFC3E /* background-texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 376694581219D708000DFC3E /* background-texture.png */; };
-		37E884631219D8E30003DB5F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E884621219D8E30003DB5F /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,8 +39,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Swahili_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Swahili_Prefix.pch; sourceTree = "<group>"; };
 		371EBDB7121937C000D7AD90 /* hp48gx-kbd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hp48gx-kbd.png"; sourceTree = "<group>"; };
+		3725CB24121D901C00DC1A1B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		376694581219D708000DFC3E /* background-texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-texture.png"; sourceTree = "<group>"; };
-		37E884621219D8E30003DB5F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* Swahili-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Swahili-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,7 +52,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */,
-				37E884631219D8E30003DB5F /* MapKit.framework in Frameworks */,
+				3725CB25121D901C00DC1A1B /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +137,7 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765580DF743DE002DB57D /* CoreGraphics.framework */,
-				37E884621219D8E30003DB5F /* MapKit.framework */,
+				3725CB24121D901C00DC1A1B /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
