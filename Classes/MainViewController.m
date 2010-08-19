@@ -74,6 +74,8 @@
 - (IBAction)controlHit:(UIButton*)sender {
     NSString* text;
     NSUInteger count;
+    UIPasteboard* pasteboard;
+    NSCharacterSet* allButDigits;
     
     switch(sender.tag) {
         case 0: // ENTER
@@ -112,6 +114,26 @@
                 [self updateStackView];
             }
             break;
+            
+        case 4: // COPY
+            [self push];
+            text = [stackView2.text retain];
+            pasteboard = [[UIPasteboard generalPasteboard] retain];
+            pasteboard.string = text;
+            [pasteboard release];
+            [text release];
+            break;
+            
+        case 5: // PASTE
+            [self push];
+            pasteboard = [[UIPasteboard generalPasteboard] retain];
+            text = [pasteboard.string retain];
+            NSCharacterSet* allButDigits = [[[NSCharacterSet decimalDigitCharacterSet] invertedSet] retain];
+            stackView1.text = [[text componentsSeparatedByCharactersInSet:allButDigits] componentsJoinedByString:@""];
+            [text release];
+            [allButDigits release];
+            [pasteboard release];
+            break;   
     }
 }
 
