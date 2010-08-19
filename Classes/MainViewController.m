@@ -75,8 +75,15 @@
     
     switch(sender.tag) {
         case 0: // ENTER
-            [self push];
+            text = [stackView1.text retain];
+            if(text.length == 0) {
+                [_stack addObject:[_stack lastObject]];    
+            }
+            else {
+                [self push];
+            }
             [self updateStackView];
+            [text release];
             break;
         
         case 1: // DELETE
