@@ -122,6 +122,7 @@
             pasteboard.string = text;
             [pasteboard release];
             [text release];
+            [self updateStackView];
             break;
             
         case 5: // PASTE
@@ -133,6 +134,7 @@
             [text release];
             [allButDigits release];
             [pasteboard release];
+            [self updateStackView];
             break;   
     }
 }
